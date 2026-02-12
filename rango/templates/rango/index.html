@@ -3,16 +3,17 @@
 <head>
     <title>Rango</title>
 </head>
-
 <body>
-    <h1>Index Page</h1>
+    <h1>Rango says hey there partner!</h1>
 
-    <p>Rango says hey there partner!</p>
+    <div>
+        {{ boldmessage }}
+    </div>
 
-    <strong>{{ boldmessage }}</strong>
-
-    <br>
-    <a href="/rango/about/">About</a>
+    <div>
+        <a href="{% url 'rango:about' %}">About</a>
+    </div>
 </body>
 </html>
+
 

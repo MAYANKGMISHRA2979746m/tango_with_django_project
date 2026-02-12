@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }}</title>
+</head>
+<body>
+    <h1>{{ category.name }}</h1>
+
+    {% if pages %}
+        <ul>
+        {% for p in pages %}
+            <li><a href="{{ p.url }}">{{ p.title }}</a> ({{ p.views }} views)</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No pages currently in category.</strong>
+    {% endif %}
+
+    <br>
+    <a href="/rango/">Home</a>
+</body>
+</html>
