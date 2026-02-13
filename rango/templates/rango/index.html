@@ -3,36 +3,33 @@
 <head>
     <title>Rango</title>
 </head>
-
 <body>
+    <h1>Rango says hey there partner!</h1>
 
-<h1>Rango says hey there partner!</h1>
+    <div>
+        {{ boldmessage }}
+    </div>
 
-<div>
-    {{ boldmessage }}
-</div>
+    <h2>Most Liked Categories</h2>
 
-<h2>Most Liked Categories</h2>
-
-{% if categories %}
-    <ul>
-        {% for category in categories %}
+    <div>
+        {% if categories %}
+        <ul>
+            {% for category in categories %}
             <li>
-                <a href="{% url 'rango:show_category' category.slug %}">
-                    {{ category.name }}
-                </a>
+                <a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
             </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <strong>There are no categories present.</strong>
-{% endif %}
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>There are no categories present.</strong>
+        {% endif %}
+    </div>
 
-<br>
-<a href="{% url 'rango:about' %}">About</a>
-
+    <a href="{% url 'rango:about' %}">About</a>
 </body>
 </html>
+
 
 
 

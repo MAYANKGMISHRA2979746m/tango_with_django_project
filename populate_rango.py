@@ -1,14 +1,13 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
-
 import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
 django.setup()
 
 from rango.models import Category, Page
 
 
 def populate():
-
     python_pages = [
         {'title': 'Official Python Tutorial', 'url': 'https://docs.python.org/3/tutorial/', 'views': 128},
         {'title': 'Learn Python', 'url': 'https://www.learnpython.org/', 'views': 64},
@@ -17,7 +16,7 @@ def populate():
 
     django_pages = [
         {'title': 'Official Django Tutorial', 'url': 'https://docs.djangoproject.com/en/2.2/intro/tutorial01/', 'views': 128},
-        {'title': 'Django Rocks', 'url': 'http://www.djangorocks.com/', 'views': 64},
+        {'title': 'Django Rocks', 'url': 'https://www.djangorocks.com/', 'views': 64},
         {'title': 'How to Tango with Django', 'url': 'http://www.tangowithdjango.com/', 'views': 32},
     ]
 
@@ -36,11 +35,11 @@ def populate():
     for cat_name, cat_data in cats.items():
         c = add_cat(cat_name, views=cat_data['views'], likes=cat_data['likes'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'], p['views'])
+            add_page(c, p['title'], p['url'], views=p['views'])
 
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
-            print(f'- {c}: {p}')
+            print(f"- {c} ({c.views} views, {c.likes} likes): {p} ({p.views} views)")
 
 
 def add_page(cat, title, url, views=0):
